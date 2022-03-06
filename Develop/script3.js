@@ -13,7 +13,6 @@ function writePassword() {
   } //TODO split into two functions where write password will initiate the length if it does not pass it will stop or if it does pass it will go on to the next function. So need to focus on the else statement, possible solutions is to remove the window alert or thank you message and have it call another function. That is if we are unable to do both.
   console.log(length);
 
-
   //Logging if lower case characters are wanted
 
   var lower = window.confirm(
@@ -36,11 +35,9 @@ function writePassword() {
     } else {
       return "";
     }
-    console.log(lowerCa);
     //Applying the array to the charcode resulting in a string.
     return String.fromCharCode.apply(String, lowerCa);
   }
-
   console.log(lowerCase(lower));
 
   //Logging if upper case characters are wanted & Function
@@ -49,8 +46,18 @@ function writePassword() {
     "Would you like there to be upper case characters? "
   );
   function upperCase(upper) {
-    var up = upper ? Math.floor(Math.random() * 26) + 65 : "";
-    return String.fromCharCode(up);
+    var result;
+    var upperCa = [];
+    if (upper) {
+      for (let i = 0; i < length; i++) {
+        result = Math.floor(Math.random() * 26) + 65;
+        upperCa.push(result);
+      }
+    } else {
+      return "";
+    }
+
+    return String.fromCharCode.apply(String, upperCa);
   }
 
   console.log(upperCase(upper));
@@ -59,23 +66,65 @@ function writePassword() {
 
   var number = window.confirm("Would you like there to be numbers? ");
   function num(number) {
-    var digit = number ? Math.floor(Math.random() * (99 + 1)) : "";
-    return digit;
+    var result;
+    var digit = [];
+    if (number) {
+      for (let i = 0; i < length; i++) {
+        result = Math.floor(Math.random() * (99 + 1));
+        digit.push(result);
+      }
+    } else {
+      return "";
+    }
+    let digitString = digit.join("");
+
+    return digitString;
   }
 
   console.log(num(number));
 
   //Random Symbol & Function
-
+  //Confirming if a symbol is required
   var symbols = window.confirm(
     "Would you like there to be random symbols added to the password? "
   );
+  //Function to extract the amount of symbols
   function getSymbol(symbols) {
+    //Setting Symbol Array Variable
     var sym = ["!", "@", "#", "$", "%", "^", "&", "*", "/", "."];
-    const symbolspass = symbols ? [Math.floor(Math.random() * (9 + 1))] : "";
-    return sym[symbolspass];
+    //Setting result variable for the random function within the array
+    var result;
+    //Setting empty array for the results to be pushed in
+    var symbol = [];
+    //Setting an array for the random symbols to be added to them
+    var ar = [];
+    //If statement to run a forloop in case symbol is chosen and to return an empty statement if not
+    if (symbols) {
+      //Establishing forloop
+      for (let i = 0; i < length; i++) {
+        //Adding the randomized numbers with a max of 9 based on the length of the symbols array
+        result = Math.floor(Math.random() * (9 + 1));
+        //Pushing the numbers into symbols array
+        symbol.push(result);
+        //Setting bar variable from sym array
+        var bar = Array.from(sym);
+        //Extract the symbols from sym array through the method of matching the bar with the specific randomized number put into the symbol array. This will allow it through the for loop to extract each individual symbol
+        //Pushing the symbols into the ar array
+        ar.push(bar[symbol[i]]);
+      }
+      //Returning an empty item in the case symbols was not chosen
+    } else {
+      return "";
+    }
+    return (symbolString = ar.join(""));
   }
   console.log(getSymbol(symbols));
+
+  //Setting variables for all the functions above to be randomized
+  const lowercase = lowerCase(lower);
+  const uppercase = upperCase(upper);
+  const figure = num(number);
+  const sign = getSymbol(symbols);
 }
 // Write password to the #password input
 // function writePassword() {
@@ -84,6 +133,8 @@ function writePassword() {
 
 //   passwordText.value = password;
 // }
+
+//Function that will combine and return the whole password.
 
 //Assigning constant characters
 
