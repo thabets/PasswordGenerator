@@ -10,8 +10,7 @@ function writePassword() {
     return "Sorry, we are unable to process your request. Please try again!";
   } else {
     window.alert("Thank you");
-  } //TODO split into two functions where write password will initiate the length if it does not pass it will stop or if it does pass it will go on to the next function. So need to focus on the else statement, possible solutions is to remove the window alert or thank you message and have it call another function. That is if we are unable to do both.
-  console.log(length);
+  }
 
   //Logging if lower case characters are wanted
 
@@ -38,7 +37,6 @@ function writePassword() {
     //Applying the array to the charcode resulting in a string.
     return String.fromCharCode.apply(String, lowerCa);
   }
-  console.log(lowerCase(lower));
 
   //Logging if upper case characters are wanted & Function
 
@@ -60,8 +58,6 @@ function writePassword() {
     return String.fromCharCode.apply(String, upperCa);
   }
 
-  console.log(upperCase(upper));
-
   //Logging if numbers are wanted
 
   var number = window.confirm("Would you like there to be numbers? ");
@@ -80,8 +76,6 @@ function writePassword() {
 
     return digitString;
   }
-
-  console.log(num(number));
 
   //Random Symbol & Function
   //Confirming if a symbol is required
@@ -118,7 +112,6 @@ function writePassword() {
     }
     return (symbolString = ar.join(""));
   }
-  console.log(getSymbol(symbols));
 
   //Setting variables for all the functions above to be randomized
   const lowercase = lowerCase(lower);
