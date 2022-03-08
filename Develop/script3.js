@@ -132,6 +132,7 @@ function writePassword() {
     return (finalPassword = finalPasswordArray.join(""));
   }
   console.log(shuffle(compResultString));
+  document.getElementById("password").innerHTML = shuffle(compResultString);
 }
 
 generateBtn.addEventListener("click", writePassword);
