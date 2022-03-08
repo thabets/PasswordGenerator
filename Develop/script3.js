@@ -131,7 +131,7 @@ function writePassword() {
     //Returning a string that was converted from an array.
     return (finalPassword = finalPasswordArray.join(""));
   }
-  console.log(shuffle(compResultString));
+  //This is to present the final result on the webpage
   document.getElementById("password").innerHTML = shuffle(compResultString);
 }
 
