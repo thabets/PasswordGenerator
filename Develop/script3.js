@@ -70,7 +70,7 @@ function writePassword() {
     var digit = [];
     if (number) {
       for (let i = 0; i < length; i++) {
-        result = Math.floor(Math.random() * (99 + 1));
+        result = Math.floor(Math.random() * (9 + 1));
         digit.push(result);
       }
     } else {
@@ -125,24 +125,20 @@ function writePassword() {
   const uppercase = upperCase(upper);
   const figure = num(number);
   const sign = getSymbol(symbols);
+  //Combining all elements into one string for randomization
+  let compResultString = lowercase + uppercase + figure + sign;
+  //Function to shuffle all elements that are requested and combine them into the final password
+  function shuffle(compResultString) {
+    //Spliting the string into an array to be randomized
+    let array = compResultString.split("");
+    //Shuffling or randomizing array
+    const shuffledArray = array.sort((a, b) => 0.5 - Math.random());
+    //Slicing the array to the length requested
+    const finalPasswordArray = shuffledArray.slice(0, length);
+    //Returning a string that was converted from an array.
+    return (finalPassword = finalPasswordArray.join(""));
+  }
+  console.log(shuffle(compResultString));
 }
-// Write password to the #password input
-// function writePassword() {
-//   var password = generatePassword();
-//   var passwordText = document.getElementById("password");
 
-//   passwordText.value = password;
-// }
-
-//Function that will combine and return the whole password.
-
-//Assigning constant characters
-
-const range = length;
-// const lowerCase = getLower;
-// const upperCase = getUpper;
-
-// console.log(range + lowerCase + upperCase);
-
-// Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
