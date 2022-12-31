@@ -7,7 +7,9 @@ function writePassword() {
     "How long would you like your password to be? Please choose a number between 8 to 128 characters"
   );
   if (length > 128 || length < 8) {
-    return "Sorry, we are unable to process your request. Please try again!";
+    return window.alert(
+      "Sorry, we are unable to process your request. The number is out of the permitted range,Please try again!"
+    );
   } else {
     window.alert("Thank you");
   }
